@@ -301,6 +301,25 @@ class TemplateProcessor
 
     /**
      * @param string $search
+     * @param Element\AbstractElement $complexType
+     * @return void
+     */
+    public function setComplexValues(string $search, Element\AbstractElement $complexType): void
+    {
+        $regExpEscaper = new RegExp();
+        $result = preg_match_all($regExpEscaper->escape($search), $this->tempDocumentMainPart, $matches);
+
+        if (!$result) {
+            return;
+        }
+
+        for ($i = 1; $i <= $result; $i++) {
+            $this->setComplexValue($search, $complexType);
+        }
+    }
+
+    /**
+     * @param string $search
      */
     public function setComplexBlock($search, Element\AbstractElement $complexType): void
     {
@@ -512,9 +531,11 @@ class TemplateProcessor
             $heightMatches = [];
             preg_match('/\\d([a-z%]+)$/', $height, $heightMatches);
             // try to fix only if dimensions are same
-            if (!empty($widthMatches)
+            if (
+                !empty($widthMatches)
                 && !empty($heightMatches)
-                && $widthMatches[1] == $heightMatches[1]) {
+                && $widthMatches[1] == $heightMatches[1]
+            ) {
                 $dimention = $widthMatches[1];
                 $widthFloat = (float) $width;
                 $heightFloat = (float) $height;
@@ -700,7 +721,7 @@ class TemplateProcessor
                     if (preg_match('/(<[^<]+>)([^<]*)(' . preg_quote($varNameWithArgsFixed) . ')([^>]*)(<[^>]+>)/Uu', $partContent, $matches)) {
                         $wholeTag = $matches[0];
                         array_shift($matches);
-                        [$openTag, $prefix, , $postfix, $closeTag] = $matches;
+                        [$openTag, $prefix,, $postfix, $closeTag] = $matches;
                         $replaceXml = $openTag . $prefix . $closeTag . $xmlImage . $openTag . $postfix . $closeTag;
                         // replace on each iteration, because in one tag we can have 2+ inline variables => before proceed next variable we need to change $partContent
                         $partContent = $this->setValueForPart($wholeTag, $replaceXml, $partContent, $limit);
@@ -784,7 +805,8 @@ class TemplateProcessor
 
                 // If tmpXmlRow doesn't contain continue, this row is no longer part of the spanned row.
                 $tmpXmlRow = $this->getSlice($extraRowStart, $extraRowEnd);
-                if (!preg_match('#<w:vMerge/>#', $tmpXmlRow) &&
+                if (
+                    !preg_match('#<w:vMerge/>#', $tmpXmlRow) &&
                     !preg_match('#<w:vMerge w:val="continue"\s*/>#', $tmpXmlRow)
                 ) {
                     break;
@@ -846,7 +868,8 @@ class TemplateProcessor
 
                 // If tmpXmlRow doesn't contain continue, this row is no longer part of the spanned row.
                 $tmpXmlRow = $this->getSlice($extraRowStart, $extraRowEnd);
-                if (!preg_match('#<w:vMerge/>#', $tmpXmlRow) &&
+                if (
+                    !preg_match('#<w:vMerge/>#', $tmpXmlRow) &&
                     !preg_match('#<w:vMerge w:val="continue" />#', $tmpXmlRow)
                 ) {
                     break;
