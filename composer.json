@@ -1,10 +1,30 @@
 {
-    "name": "phpoffice/phpword",
+    "name": "phpoffice/phpword-that-works",
     "description": "PHPWord - A pure PHP library for reading and writing word processing documents (OOXML, ODF, RTF, HTML, PDF)",
     "keywords": [
-        "PHP", "PHPOffice", "office", "PHPWord", "word", "template", "template processor", "reader", "writer",
-        "docx", "OOXML", "OpenXML", "Office Open XML", "ISO IEC 29500", "WordprocessingML",
-        "RTF", "Rich Text Format", "doc", "odt", "ODF", "OpenDocument", "PDF", "HTML"
+        "PHP",
+        "PHPOffice",
+        "office",
+        "PHPWord",
+        "word",
+        "template",
+        "template processor",
+        "reader",
+        "writer",
+        "docx",
+        "OOXML",
+        "OpenXML",
+        "Office Open XML",
+        "ISO IEC 29500",
+        "WordprocessingML",
+        "RTF",
+        "Rich Text Format",
+        "doc",
+        "odt",
+        "ODF",
+        "OpenDocument",
+        "PDF",
+        "HTML"
     ],
     "homepage": "https://phpoffice.github.io/PHPWord/",
     "type": "library",
@@ -49,7 +69,7 @@
         ],
         "fix": [
             "@php vendor/bin/php-cs-fixer fix --ansi"
-        ], 
+        ],
         "samples": [
             "php samples/Sample_01_SimpleText.php",
             "php samples/Sample_02_TabStops.php",
@@ -108,7 +128,7 @@
     "require": {
         "php": "^7.1|^8.0",
         "ext-dom": "*",
-        "ext-gd": "*",  
+        "ext-gd": "*",
         "ext-zip": "*",
         "ext-json": "*",
         "ext-xml": "*",
