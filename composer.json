@@ -1,5 +1,5 @@
 {
-    "name": "phpoffice/phpword-that-works",
+    "name": "joaoplbnascimento/phpword-that-works",
     "description": "PHPWord - A pure PHP library for reading and writing word processing documents (OOXML, ODF, RTF, HTML, PDF)",
     "keywords": [
         "PHP",
@@ -26,34 +26,9 @@
         "PDF",
         "HTML"
     ],
-    "homepage": "https://phpoffice.github.io/PHPWord/",
+    "homepage": "https://github.com/joaopauloleite/PHPWord-That-Works",
     "type": "library",
     "license": "LGPL-3.0-only",
-    "authors": [
-        {
-            "name": "Mark Baker"
-        },
-        {
-            "name": "Gabriel Bull",
-            "email": "me@gabrielbull.com",
-            "homepage": "http://gabrielbull.com/"
-        },
-        {
-            "name": "Franck Lefevre",
-            "homepage": "https://rootslabs.net/blog/"
-        },
-        {
-            "name": "Ivan Lanin",
-            "homepage": "http://ivan.lanin.org"
-        },
-        {
-            "name": "Roman Syroeshko",
-            "homepage": "http://ru.linkedin.com/pub/roman-syroeshko/34/a53/994/"
-        },
-        {
-            "name": "Antoine de Troostembergh"
-        }
-    ],
     "scripts": {
         "test": [
             "@php vendor/bin/phpunit --color=always"
